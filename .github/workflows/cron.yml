@@ -1,0 +1,12 @@
+name: Reminder Cron Job
+on:
+  schedule:
+    # Runs every minute
+    - cron: '* * * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Vercel Cron Endpoint
+        run: |
+          curl --request GET "${{ secrets.VERCEL_CRON_URL }}"
